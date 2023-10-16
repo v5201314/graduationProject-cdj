@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+//引入 VueRouter
+import VueRouter from 'vue-router'
+//引入 router
+import router from './router'
 Vue.config.productionTip = false
-
+//应用插件
+Vue.use(VueRouter)
 
 import {
   Pagination,
@@ -81,7 +86,8 @@ import {
   MessageBox,
   Message,
   Notification,
-  Avatar
+  Avatar,
+  Descriptions,DescriptionsItem
 } from 'element-ui';
 
 Vue.use(Pagination);
@@ -158,6 +164,8 @@ Vue.use(Backtop);
 Vue.use(PageHeader);
 Vue.use(CascaderPanel);
 Vue.use(Avatar);
+Vue.use(Descriptions);
+Vue.use(DescriptionsItem);
 
 Vue.use(Loading.directive);
 
@@ -171,4 +179,5 @@ Vue.prototype.$message = Message;
 
 new Vue({
   render: h => h(App),
+  router,
 }).$mount('#app')
