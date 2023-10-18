@@ -20,12 +20,17 @@
       <h1>CDJ{{ dynamicInfo }}页面</h1>
       <form name="form1" action="/tomcat1/Enroll">
         <div class="inputs">
-          <input type="text" name="username" value="用户名" />
-          <input type="text" name="password" value="密码" />
-          <input v-if="!loginPage" type="text" value="确认密码" />
-          <input type="text" name="vcode" placeholder="验证码" />
+          <input
+            type="text"
+            v-model="userName"
+            placeholder="用户名"
+            @blur="userNameVerify"
+          />
+          <input type="password" v-model="password" placeholder="密码" @blur="passwordVerify"/>
+          <input v-if="!loginPage" type="password" placeholder="确认密码" @blur="confirmPassword" />
+          <input type="text" v-model="vcode" placeholder="验证码" />
           <img alt="验证码" src="/tomcat1/vcode" />
-          <input type="button" :value="dynamicInfo" />
+          <input type="button" :value="dynamicInfo" @click="submitForm"/>
         </div>
       </form>
     </div>
@@ -54,9 +59,17 @@ export default {
         },
       ],
       searchClass: "普通用户",
+      userName: "",
+      password: "",
+      vcode:'',
+      //验证用户名的正则
+      regexp: /^[a-zA-Z0-9]{5,13}$/,
+      //验证密码的正则
+      pwdz: /^[a-zA-Z0-9]{6,13}$/,
     };
   },
   methods: {
+    //改变登录与注册
     changState() {
       this.loginPage = !this.loginPage;
       if (this.loginPage) {
@@ -65,8 +78,46 @@ export default {
         this.dynamicInfo = "注册";
       }
     },
-  },
-};
+    //校验用户名是否合法
+    userNameVerify() {
+      if(this.regexp.test(this.userName)){
+        //发送网络请求 查看用户名是否存在
+      }else{
+        this.$message.error('用户名不合法，请输入5-13位，包含大小写字母和数字');
+        this.userName=''
+      }
+    },
+    //校验密码是否合法
+    passwordVerify() {
+      if(this.pwdz.test(this.password)){
+
+      }else{
+        this.$message.error('密码不合法,请输入6-13位，包含大小写字母和数字');
+        this.password=''
+      }
+    },
+    //确认密码
+    confirmPassword(event){
+      if(this.password!==event.target.value){
+        this.$message.error('两次密码不同');
+        event.target.value=''
+      }
+    },
+    //提交表单
+    submitForm(){
+      if(this.userName&&this.password&&this.vcode){
+        if(loginPage){
+          //登录表单
+        }else{
+          //注册表单
+        }
+        
+      }else{
+        this.$message.error('请完善表单');
+      }
+    }
+  }
+  }
 </script>
 
 <style lang="less" scoped>
