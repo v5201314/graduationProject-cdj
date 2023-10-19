@@ -11,8 +11,8 @@
   
   <script>
   import SearchBox from "@/components/SearchBox.vue";
-  import PaginationBar from "../components/PaginationBar";
-  import BusinessInfo from "../components/AdminXp/business/BusinessInfo";
+  import PaginationBar from "@/components/PaginationBar";
+  import BusinessInfo from "@/components/AdminXp/business/BusinessInfo";
   export default {
     name: "BusinessManagement",
     components: { BusinessInfo, PaginationBar, SearchBox },

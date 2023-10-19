@@ -6,21 +6,26 @@
     <template v-if="route === 2">
       <AdminApp></AdminApp>
     </template>
+    <template v-if="route === 3">
+      <BusinessApp></BusinessApp>
+    </template>
   </div>
 </template>
 
 <script>
 import AdminApp from "./components/AdminXp/AdminApp";
 import LoginPage from "./components/login/LoginPage.vue";
+import BusinessApp from "./components/BusinessXp/BusinessApp.vue";
 export default {
   name: "App",
   components: {
     AdminApp,
     LoginPage,
+    BusinessApp
   },
   data() {
     return {
-      //管理展示哪个页面
+      //管理展示哪个页面 1:登录注册页面 2:管理员界面 3:商家界面 4:用户界面
       route: 2,
     };
   },

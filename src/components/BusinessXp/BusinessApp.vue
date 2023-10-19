@@ -1,18 +1,18 @@
 <template>
     <div>
-      <CdjHeader :leixing="1"></CdjHeader>
-      <NavigationBar></NavigationBar>
+      <CdjHeader :leixing="2"></CdjHeader>
+      <BusinessNavigationBar></BusinessNavigationBar>
     </div>
   </template>
   
   <script>
   import CdjHeader from "../../components/CdjHeader.vue";
-  import NavigationBar from "./NavigationBar.vue";
+  import BusinessNavigationBar from "./BusinessNavigationBar.vue";
   export default {
-    name: "AdminApp",
+    name: "BusinessApp",
     components: { 
       CdjHeader,
-      NavigationBar
+      BusinessNavigationBar
      },
      data(){
       return{

@@ -11,8 +11,8 @@
 
 <script>
 import SearchBox from "@/components/SearchBox.vue";
-import PaginationBar from "../components/PaginationBar";
-import UserInfo from "../components/AdminXp/user/UserInfo";
+import PaginationBar from "@/components/PaginationBar";
+import UserInfo from "@/components/AdminXp/user/UserInfo";
 export default {
   name: "UserManagement",
   components: { UserInfo, PaginationBar, SearchBox },

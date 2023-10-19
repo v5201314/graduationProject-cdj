@@ -1,6 +1,6 @@
 <template>
   <el-header class="cdjHeader">
-    <h1 class="systemName">CDJ系统</h1>
+    <h1 class="systemName">CDJ系统-{{ leixing===1?'管理员':'商家' }}</h1>
     <div class="demo-type userBar">
         <p class="admin">管理员</p>
       <el-dropdown>
@@ -21,6 +21,13 @@
 <script>
 export default {
   name: "CdjHeader",
+    //1 为管理员 2 为商家
+  props:['leixing'],
+  data(){
+    return{
+    
+    }
+  }
 };
 </script>
 
