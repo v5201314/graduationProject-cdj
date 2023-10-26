@@ -20,7 +20,7 @@
       return {
         //用户信息 BusinessInfo 组件需要的数据
         userData: [
-          { id: "001", commodityName: "华硕",classify:'电脑', quantity:2333, },
+          { id: "001", commodityName: "华硕-vivobook",classify:'电脑', quantity:2333, },
           { id: "002", commodityName: "vivo",classify:'手机', quantity:263, },
           { id: "003", commodityName: "娃哈哈",classify:'食品', quantity:2911, },
         ],

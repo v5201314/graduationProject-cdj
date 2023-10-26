@@ -9,6 +9,9 @@
     <template v-if="route === 3">
       <BusinessApp></BusinessApp>
     </template>
+    <template v-if="route === 4">
+      <UserAppVue></UserAppVue>
+    </template>
   </div>
 </template>
 
@@ -16,17 +19,19 @@
 import AdminApp from "./components/AdminXp/AdminApp";
 import LoginPage from "./components/login/LoginPage.vue";
 import BusinessApp from "./components/BusinessXp/BusinessApp.vue";
+import UserAppVue from './components/UserXp/UserApp.vue';
 export default {
   name: "App",
   components: {
     AdminApp,
     LoginPage,
-    BusinessApp
+    BusinessApp,
+    UserAppVue
   },
   data() {
     return {
       //管理展示哪个页面 1:登录注册页面 2:管理员界面 3:商家界面 4:用户界面
-      route: 2,
+      route: 4,
     };
   },
 };

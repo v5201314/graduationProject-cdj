@@ -26,7 +26,7 @@
         width="50%"
         :before-close="handleClose"
       >
-        <el-descriptions class="margin-top" :column="3" :size="size">
+        <el-descriptions class="margin-top" :column="4" :size="size">
           <template slot="extra">
             <el-dialog
               width="30%"
@@ -70,15 +70,14 @@
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
-              <i class="el-icon-tickets"></i>
-              商家
+              售价
             </template>
             无
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
               <i class="el-icon-office-building"></i>
-              发货地址
+              商品介绍
             </template>
             江苏省苏州市吴中区吴中大道 1188 号
           </el-descriptions-item>
@@ -124,7 +123,7 @@
         })[0]
       
       },
-      //删除商家
+      //下架商品
       deleteUserButton() {
         this.innerVisible = false;
         this.dialogVisible = false;
