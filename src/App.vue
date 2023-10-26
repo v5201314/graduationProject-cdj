@@ -1,32 +1,12 @@
 <template>
-  <div>
-    <template v-if="route === 1">
-      <LoginPage></LoginPage>
-    </template>
-    <template v-if="route === 2">
-      <AdminApp></AdminApp>
-    </template>
-    <template v-if="route === 3">
-      <BusinessApp></BusinessApp>
-    </template>
-    <template v-if="route === 4">
-      <UserAppVue></UserAppVue>
-    </template>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import AdminApp from "./components/AdminXp/AdminApp";
-import LoginPage from "./components/login/LoginPage.vue";
-import BusinessApp from "./components/BusinessXp/BusinessApp.vue";
-import UserAppVue from './components/UserXp/UserApp.vue';
+
 export default {
   name: "App",
   components: {
-    AdminApp,
-    LoginPage,
-    BusinessApp,
-    UserAppVue
   },
   data() {
     return {
