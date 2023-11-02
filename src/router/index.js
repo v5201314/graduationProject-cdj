@@ -14,7 +14,9 @@ import BusinessApp from "../components/BusinessXp/BusinessApp.vue";
 //用户页面
 import UserAppVue from '../components/UserXp/UserApp.vue';
 //用户页面的路由组件
-import Test1 from '../pages/user/test1'
+import CommodityList from '../pages/user/CommodityList'
+import SearchCommodity from '@/pages/user/SearchCommodity'
+import CommodityDetail from '@/pages/user/CommodityDetail'
 import Test2 from '../pages/user/test2'
 //创建并暴露一个路由器
 const router = new VueRouter({
@@ -22,7 +24,6 @@ const router = new VueRouter({
         { path: '/', redirect: '/index' },
         //管理员页面的路由配置
         {
-            name: 'admin',
             path: '/admin',
             component: AdminApp,
             meta: { title: '管理员页面', isAuth: true },
@@ -55,20 +56,25 @@ const router = new VueRouter({
         },
         //用户界面的路由配置
         {
-            name: 'index',
             path: '/index',
             component: UserAppVue,
             meta:{title:'CDJ系统主页',isAuth:true},
             children:[
+                { path: '/', redirect: '/commodityDetail' },
                 {
-                    name: 'test1',
-                    path: '/test1',
-                    component: Test1
+                    name: 'commodityList',
+                    path: '/commodityList',
+                    component: CommodityList
                 },
                 {
-                    name: 'test2',
-                    path: '/test2',
-                    component: Test2
+                    name: 'searchCommodity',
+                    path: '/searchCommodity',
+                    component: SearchCommodity
+                },
+                {
+                    name: 'commodityDetail',
+                    path: '/commodityDetail',
+                    component: CommodityDetail
                 },
             ]
         },

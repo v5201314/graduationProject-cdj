@@ -4,6 +4,8 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 //引入 router
 import router from './router'
+//引入 store
+import store from './store'
 Vue.config.productionTip = false
 //应用插件
 Vue.use(VueRouter)
@@ -179,5 +181,6 @@ Vue.prototype.$message = Message;
 
 new Vue({
   render: h => h(App),
+  store,
   router,
 }).$mount('#app')
