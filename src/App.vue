@@ -56,4 +56,8 @@ textarea {
     outline: none;
     color: #333;
 }
+
+p{
+  cursor:default;
+}
 </style>

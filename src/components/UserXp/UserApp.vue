@@ -2,7 +2,7 @@
   <div class="wrapper">
    <UserHeader></UserHeader>
    <MainSearchVue></MainSearchVue>
-   <CarouselMapVue :v-if="$store.state.carouselIsShow"></CarouselMapVue>
+   <CarouselMapVue v-if="$store.state.carouselIsShow"></CarouselMapVue>
    <router-view></router-view>
    <userFooterVue></userFooterVue>
   </div>

@@ -26,6 +26,7 @@ export default {
         {commodityId:'007',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
         {commodityId:'008',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
         {commodityId:'009',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
+        {commodityId:'010',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
       ]
     }
   }

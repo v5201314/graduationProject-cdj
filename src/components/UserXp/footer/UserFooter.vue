@@ -140,6 +140,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  
+}
+.bottomBody .wrapper .qrCode>img{
+  width: 149px;
+  height: 190px;
 }
 .bottomBody .wrapper .qrCode .contact {
   width: 131px;

@@ -2,8 +2,8 @@
   <div id="commodityDetail">
     <div class="left"><img src="@/assets/xCIoTNipCI.jpg" alt="" /></div>
     <div class="right">
-      <p>的时空结构i哦温哥华我i给你我i绕太阳</p>
-      <span class="price">¥ 324</span>
+      <p>{{commodityItem.commodityIntroduce}}</p>
+      <span class="price">¥ {{ commodityItem.commodityPrice }}</span>
       <div class="commodityColor">
         <span>颜色:</span>
         <div class="chooseColor">
@@ -33,6 +33,10 @@
 <script>
 export default {
   name: "commodityDetail",
+  props:['commodityItem'],
+  mounted(){
+    console.log(this.commodityItem);
+  }
 };
 </script>
 
@@ -40,6 +44,7 @@ export default {
 #commodityDetail {
   display: flex;
   justify-content: center;
+  margin: 30px 0;
   .left {
     width: 20vw;
     margin-right: 30px;

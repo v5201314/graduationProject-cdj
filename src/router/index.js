@@ -1,5 +1,6 @@
 //该文件用于创建路由器
 import VueRouter from 'vue-router'
+import store from '@/store';
 /**引入组件 */
 //管理员页面
 import AdminApp from "../components/AdminXp/AdminApp";
@@ -60,7 +61,7 @@ const router = new VueRouter({
             component: UserAppVue,
             meta:{title:'CDJ系统主页',isAuth:true},
             children:[
-                { path: '/', redirect: '/commodityDetail' },
+                { path: '/', redirect: '/commodityList' },
                 {
                     name: 'commodityList',
                     path: '/commodityList',
@@ -74,7 +75,8 @@ const router = new VueRouter({
                 {
                     name: 'commodityDetail',
                     path: '/commodityDetail',
-                    component: CommodityDetail
+                    component: CommodityDetail,
+                    props:true,
                 },
             ]
         },
@@ -90,10 +92,20 @@ const router = new VueRouter({
 })
 
 
-//全局的后置路由守卫
+//全局的前置路由守卫
 router.beforeEach((to,from,next)=>{
     document.title=to.meta.title||'余生学习' //改变网页的title
+    if(from.name==='commodityList'){
+        store.commit('changeCarouselIsShow')
+    }
     next()
+})
+//全局后置路由守卫————初始化的时候调用、每次切换路由之后被调用
+router.afterEach((to)=>{
+    if(to.name==='commodityList'){
+        store.commit('changeCarouselIsShow')
+    }
+
 })
 
 export default router
