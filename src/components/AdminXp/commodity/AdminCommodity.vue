@@ -134,22 +134,7 @@
   
   <style lang="less">
   #tab1 {
-    width: 100%;
-  
-    .tableHeader {
-      background-color: #8bcfeb;
-      th {
-        border-radius: 5px;
-      }
-    }
-    tr {
-      text-align: center;
-      .ge {
-        padding: 3px;
-        background-color: #ebeaea;
-        border-radius: 5px;
-      }
-    }
+   
     .xiangxi {
       tr {
         height: 60px;

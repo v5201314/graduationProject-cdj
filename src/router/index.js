@@ -1,5 +1,6 @@
 //该文件用于创建路由器
 import VueRouter from 'vue-router'
+//引入store
 import store from '@/store';
 /**引入组件 */
 //管理员页面

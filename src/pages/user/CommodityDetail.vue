@@ -2,7 +2,7 @@
   <div id="commodityDetail">
     <div class="left"><img src="@/assets/xCIoTNipCI.jpg" alt="" /></div>
     <div class="right">
-      <p>{{commodityItem.commodityIntroduce}}</p>
+      <p>{{ commodityItem.commodityIntroduce }}</p>
       <span class="price">¥ {{ commodityItem.commodityPrice }}</span>
       <div class="commodityColor">
         <span>颜色:</span>
@@ -23,8 +23,26 @@
         </div>
       </div>
       <div>
+        <span>数量:</span>
+        <div class="quantity">
+          <button
+            :disabled="quantityPurchased < 2"
+            @click="quantityPurchased--"
+          >
+            -
+          </button>
+          <input type="text" v-model="quantityPurchased" />
+          <button @click="quantityPurchased++">+</button>
+        </div>
+      </div>
+      <div>
         <el-button type="info">立即购买</el-button>
-        <el-button type="primary">加入购物车</el-button>
+        <el-button
+          type="primary"
+          @click="addCart"
+          :disabled="quantityPurchased <= 0"
+          >加入购物车</el-button
+        >
       </div>
     </div>
   </div>
@@ -33,9 +51,31 @@
 <script>
 export default {
   name: "commodityDetail",
-  props:['commodityItem'],
-  mounted(){
-    console.log(this.commodityItem);
+  props: ["commodityItem"],
+  data() {
+    return {
+      //购买数量
+      quantityPurchased: 1,
+    };
+  },
+  methods:{
+    //添加商品到购物车
+    addCart(){
+      //给商品添加上购买数量
+      console.log(this.commodityItem);
+      //不要直接修改 props的数据 创建一个新的对象
+      var shuju={
+        ...this.commodityItem
+      } 
+      shuju.commodityQuantity=this.quantityPurchased
+      //如果 shoppingCart 已经存在就读取其中的值 否则创建一个新的数组
+      var shoppingCart=JSON.parse(localStorage.getItem('shoppingCart'))||[]
+      shoppingCart.push(shuju)
+      console.log(shoppingCart);
+      //存储购物车
+      localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart))
+      location.reload()
+    }
   }
 };
 </script>
@@ -65,6 +105,16 @@ export default {
     div {
       margin-top: 5pxpx;
       height: 60px;
+      .quantity {
+        button {
+          width: 20px;
+        }
+        input {
+          width: 20px;
+          border: 1px solid black;
+          text-align: center;
+        }
+      }
       div {
         display: inline-block;
         span {

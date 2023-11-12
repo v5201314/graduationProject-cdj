@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style >
+<style lang="less">
 /*全局去除默认样式*/
 * {
     padding: 0;
@@ -60,4 +60,23 @@ textarea {
 p{
   cursor:default;
 }
+
+#tab1 {
+    width: 100%;
+  
+    .tableHeader {
+      background-color: #8bcfeb;
+      th {
+        border-radius: 5px;
+      }
+    }
+    tr {
+      text-align: center;
+      .ge {
+        padding: 3px;
+        background-color: #ebeaea;
+        border-radius: 5px;
+      }
+    }
+    }
 </style>
