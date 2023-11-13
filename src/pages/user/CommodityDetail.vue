@@ -74,7 +74,6 @@ export default {
       console.log(shoppingCart);
       //存储购物车
       localStorage.setItem('shoppingCart',JSON.stringify(shoppingCart))
-      location.reload()
     }
   }
 };
@@ -86,7 +85,7 @@ export default {
   justify-content: center;
   margin: 30px 0;
   .left {
-    width: 20vw;
+    width: 20%;
     margin-right: 30px;
     img {
       width: 100%;

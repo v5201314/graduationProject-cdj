@@ -12,11 +12,12 @@
           :before-close="handleClose"
           width="600px"
           :visible.sync="dialogVisible"
+          v-if="dialogVisible"
         >
         <!-- 购物车组件 -->
           <ShoppingCart :closeShoppingCart="closeShoppingCart"></ShoppingCart>
         </el-dialog>
-        <p class="admin">管理员</p>
+        <p class="admin" @click="goLogin">{{$store.state.userInfo.userName||'请登录'  }}</p>
         <el-dropdown>
           <el-avatar icon="el-icon-user-solid"></el-avatar>
           <el-dropdown-menu slot="dropdown">
@@ -51,6 +52,12 @@ export default {
           done();
         })
         .catch((_) => {});
+
+    },
+    //前往登录页面
+    goLogin(){
+      if(this.$store.state.userInfo.id)return;
+      this.$router.push('login')
     },
     //前往商品详情页面关闭购物车
     closeShoppingCart(){

@@ -99,7 +99,23 @@ router.beforeEach((to,from,next)=>{
     if(from.name==='commodityList'){
         store.commit('changeCarouselIsShow')
     }
-    next()
+    console.log(to.path);
+    //根据用户的权限决定他能进入的页面
+    if(to.name==='business'){
+        //判断权限类型
+        if(store.state.userInfo.permissions===2){
+            next()
+        }
+
+    }else if(to.name==='UserManagement'||to.name==='BusinessManagement'||to.name==='CommodityManagement'){
+      
+         //判断权限类型
+         if(store.state.userInfo.permissions===3){
+            next()
+        }
+    }else{
+        next()
+    }
 })
 //全局后置路由守卫————初始化的时候调用、每次切换路由之后被调用
 router.afterEach((to)=>{

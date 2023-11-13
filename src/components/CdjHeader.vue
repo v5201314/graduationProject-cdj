@@ -2,7 +2,7 @@
   <el-header class="cdjHeader">
     <h1 class="systemName">CDJ系统-{{ leixing===1?'管理员':'商家' }}</h1>
     <div class="demo-type userBar">
-        <p class="admin">管理员</p>
+        <p class="admin" >{{$store.state.userInfo.userName||'请登录' }}</p>
       <el-dropdown>
         
         <el-avatar icon="el-icon-user-solid"></el-avatar>
@@ -27,7 +27,8 @@ export default {
     return{
     
     }
-  }
+    
+  },
 };
 </script>
 

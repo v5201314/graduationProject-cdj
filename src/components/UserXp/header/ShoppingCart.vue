@@ -1,7 +1,7 @@
 <template>
   <div id="shoppingCart">
     <div class="sC_top">
-      <p class="prompt" v-if="total===0">你的购物车空空如也。。。</p>
+      <p class="prompt" v-if="total === 0">你的购物车空空如也。。。</p>
       <table id="tab1" v-else>
         <tr class="tableHeader">
           <th>选择</th>
@@ -45,8 +45,10 @@
         已选择：<span>{{ selectTotal }}</span
         >件商品
       </p>
-      <p>共计：<span>￥{{ totalAmount }}</span></p>
-      <el-button type="success" :disabled="selectTotal==0">支付</el-button>
+      <p>
+        共计：<span>￥{{ totalAmount }}</span>
+      </p>
+      <el-button type="success" :disabled="selectTotal == 0">支付</el-button>
     </div>
   </div>
 </template>
@@ -54,10 +56,10 @@
 <script>
 export default {
   name: "ShoppingCart",
-  props:['closeShoppingCart'],
+  props: ["closeShoppingCart"],
   data() {
     return {
-      shoppingCart: JSON.parse(localStorage.getItem('shoppingCart'))||[]
+      shoppingCart: JSON.parse(localStorage.getItem("shoppingCart")) || [],
     };
   },
   methods: {
@@ -65,11 +67,15 @@ export default {
     goDetails(commodityItem) {
       console.log(111);
       //先关闭购物车
-      this.closeShoppingCart()
-      this.$router.push({
-        name: "commodityDetail",
-        params: { commodityItem },
-      }).catch((val)=>{console.log(val);})
+      this.closeShoppingCart();
+      this.$router
+        .push({
+          name: "commodityDetail",
+          params: { commodityItem },
+        })
+        .catch((val) => {
+          console.log(val);
+        });
     },
     //改变对应商品的勾选状态
     changeCheck(id) {
@@ -86,11 +92,11 @@ export default {
       });
     },
     //删除对应的商品
-    deleteCommodity(id){
-     this.shoppingCart=this.shoppingCart.filter((item)=>{
-        return item.commodityId!=id
-      })
-    }
+    deleteCommodity(id) {
+      this.shoppingCart = this.shoppingCart.filter((item) => {
+        return item.commodityId != id;
+      });
+    },
   },
   computed: {
     //购物车的商品总数
@@ -109,23 +115,26 @@ export default {
         return this.total === this.selectTotal;
       },
       set(value) {
-         this.changeAllCheck(value)
+        this.changeAllCheck(value);
       },
-      
     },
     //计算总金额
-    totalAmount(){
-        return this.shoppingCart.reduce((pre, current) => {
-        return pre + (current.isChoose ? current.commodityQuantity*current.commodityPrice : 0);
+    totalAmount() {
+      return this.shoppingCart.reduce((pre, current) => {
+        return (
+          pre +
+          (current.isChoose
+            ? current.commodityQuantity * current.commodityPrice
+            : 0)
+        );
       }, 0);
-      }
-
+    },
   },
   watch: {
     shoppingCart: {
       deep: true,
       handler(Value) {
-        localStorage.setItem('shoppingCart',JSON.stringify(Value))
+        localStorage.setItem("shoppingCart", JSON.stringify(Value));
       },
     },
   },
@@ -158,8 +167,8 @@ export default {
       }
     }
   }
-  .prompt{
-    width:100%;
+  .prompt {
+    width: 100%;
     height: 80px;
     text-align: center;
     line-height: 80px;
