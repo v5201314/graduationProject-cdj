@@ -1,8 +1,8 @@
 <template>
   <div id="mainSearch">
    <div>
-    <input type="text" placeholder="你想要找什么宝贝">
-    <el-button type="primary">搜索</el-button>
+    <input type="text" placeholder="你想要找什么宝贝" v-model="keywords">
+    <el-button type="primary" @click="searchButton(keywords)">搜索</el-button>
    </div>
   </div>
 </template>
@@ -10,6 +10,24 @@
 <script>
 export default {
   name: "MainSearch",
+  data(){
+    return{
+      keywords:'',
+    }
+  },
+  methods:{
+    searchButton(keywords){
+      this.$router
+        .push({
+          name: "searchCommodity",
+          params: { keywords },
+        })
+        .catch((val) => {
+          console.log(val);
+        });
+      this.keywords=''
+    }
+  }
 };
 </script>
 

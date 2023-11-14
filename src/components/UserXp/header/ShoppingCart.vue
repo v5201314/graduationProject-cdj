@@ -15,7 +15,7 @@
             <input
               type="checkbox"
               :checked="goods.isChoose"
-              @change="changeCheck(goods.commodityId)"
+              @change="changeCheck(goods.id)"
             />
           </td>
           <a href="javaScript:;" @click="goDetails(goods)">
@@ -29,7 +29,7 @@
           </td>
           <td class="ge">{{ goods.commodityQuantity }}</td>
           <td class="ge">
-            <el-button type="danger" @click="deleteCommodity(goods.commodityId)"
+            <el-button type="danger" @click="deleteCommodity(goods.id)"
               >删除</el-button
             >
           </td>
@@ -80,7 +80,7 @@ export default {
     //改变对应商品的勾选状态
     changeCheck(id) {
       this.shoppingCart.forEach((item) => {
-        if (item.commodityId == id) {
+        if (item.id == id) {
           item.isChoose = !item.isChoose;
         }
       });
@@ -94,7 +94,7 @@ export default {
     //删除对应的商品
     deleteCommodity(id) {
       this.shoppingCart = this.shoppingCart.filter((item) => {
-        return item.commodityId != id;
+        return item.id != id;
       });
     },
   },

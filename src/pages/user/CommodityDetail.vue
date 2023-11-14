@@ -1,5 +1,7 @@
 <template>
-  <div id="commodityDetail">
+  <div>
+    <NotRespondingVue v-if="!commodityItem"></NotRespondingVue>
+  <div id="commodityDetail" v-else>
     <div class="left"><img src="@/assets/xCIoTNipCI.jpg" alt="" /></div>
     <div class="right">
       <p>{{ commodityItem.commodityIntroduce }}</p>
@@ -46,11 +48,17 @@
       </div>
     </div>
   </div>
+  </div>
+ 
 </template>
 
 <script>
+import NotRespondingVue from '@/components/NotResponding.vue';
 export default {
   name: "commodityDetail",
+  components:{
+    NotRespondingVue
+  },
   props: ["commodityItem"],
   data() {
     return {
@@ -68,6 +76,7 @@ export default {
         ...this.commodityItem
       } 
       shuju.commodityQuantity=this.quantityPurchased
+      shuju.isChoose=false
       //如果 shoppingCart 已经存在就读取其中的值 否则创建一个新的数组
       var shoppingCart=JSON.parse(localStorage.getItem('shoppingCart'))||[]
       shoppingCart.push(shuju)

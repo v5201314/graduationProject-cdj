@@ -1,5 +1,7 @@
 <template>
-  <div id="commodityList" class="yuanjiao">
+ <div>
+  <NotResponding v-if="commodityList.length==0"></NotResponding>
+  <div id="commodityList" class="yuanjiao" v-else>
     <div class="head yuanjiao">
       <div>
         <el-select v-model="sort" placeholder="综合排序">
@@ -19,81 +21,24 @@
       :commodityItem="item"
     ></CommodityItem>
   </div>
+ </div>
 </template>
   
   <script>
 import CommodityItem from "@/components/CommodityItem.vue";
+import NotResponding from "@/components/NotResponding.vue";
+import { getData} from "@/utils";
 export default {
   name: "CommodityList",
+  props:['keywords'],
   components: {
     CommodityItem,
+    NotResponding
   },
   data() {
     return {
       commodityList: [
-        {
-          commodityId: "001",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "002",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "003",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "004",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "005",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "006",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "007",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "008",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
-        {
-          commodityId: "009",
-          commodityImg: "../../assets/xCIoTNipCI.jpg",
-          commodityPrice: 322,
-          commoditySales: 3000,
-          commodityIntroduce: "d设计稿i供货商陆军部队所鼓舞黑i给你看论文",
-        },
+       
       ],
       options: [
         {
@@ -114,8 +59,11 @@ export default {
         },
       ],
       sort: "",
-    };
+    }
   },
+  mounted(){
+    console.log(this.keywords);
+  }
 };
 </script>
   

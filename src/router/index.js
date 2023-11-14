@@ -77,7 +77,8 @@ const router = new VueRouter({
                 {
                     name: 'searchCommodity',
                     path: '/searchCommodity',
-                    component: SearchCommodity
+                    component: SearchCommodity,
+                    props:true
                 },
                 {
                     name: 'commodityDetail',

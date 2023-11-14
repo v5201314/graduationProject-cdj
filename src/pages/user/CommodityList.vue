@@ -9,6 +9,7 @@
 
 <script>
 import CommodityItem from "@/components/CommodityItem.vue";
+import { getData} from "@/utils";
 export default {
   name: "CommodityList",
   components: {
@@ -17,19 +18,25 @@ export default {
   data(){
     return{
       commodityList:[
-        {commodityId:'001',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'002',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'003',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'004',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'005',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'006',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'007',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'008',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'009',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-        {commodityId:'010',commodityImg:'../../assets/xCIoTNipCI.jpg',commodityPrice:322,commodityIntroduce:'d设计稿i供货商陆军部队所鼓舞黑i给你看论文'},
-      ]
+        ]
     }
-  }
+  },
+  mounted(){
+    this.getCommodity();
+  },
+ methods:{
+  getCommodity() {
+      getData("commoditys",20,0,1).then(
+        (response) => {
+          this.commodityList = response;
+        },
+        (error) => {
+          this.$message.error(error);
+        }
+      );
+    },
+ }
+
 };
 </script>
 
