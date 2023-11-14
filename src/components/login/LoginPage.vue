@@ -52,9 +52,8 @@
 </template>
 
 <script>
-import { SERVE_URL } from "@/static";
+import { SERVE_URL,SERVE_URL_DD } from "@/static";
 import axios from "axios";
-import { abbreviatedInfor_pagination } from "@/utils";
 export default {
   name: "LoginPage",
   data() {
@@ -108,7 +107,7 @@ export default {
           //发送网络请求 查看用户名是否存在
           axios
             .post(
-              "http://localhost:8080/" +
+              SERVE_URL_DD +
                 "/UserName" +
                 `?username=${this.userName}`
             )
@@ -148,7 +147,7 @@ export default {
           //登录表单
           axios
             .post(
-              "http://localhost:8080/" +
+              SERVE_URL_DD +
                 "/Login" +
                 `?username=${this.userName}&password=${this.password}&vcode=${this.vcode}`
             )
@@ -198,7 +197,7 @@ export default {
           //注册表单
           axios
             .post(
-              "http://localhost:8080/" +
+              SERVE_URL_DD +
                 "/Enroll" +
                 `?username=${this.userName}&password=${this.password}&vcode=${this.vcode}&searchClass=${this.searchClass}`
             )

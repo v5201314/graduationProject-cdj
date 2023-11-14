@@ -105,7 +105,6 @@ router.beforeEach((to,from,next)=>{
     if(from.name==='commodityList'){
         store.commit('changeCarouselIsShow')
     }
-    console.log(to.path);
     //根据用户的权限决定他能进入的页面
     if(to.name==='business'){
         //判断权限类型

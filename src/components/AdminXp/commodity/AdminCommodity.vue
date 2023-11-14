@@ -10,8 +10,8 @@
       <tr v-for="(data, index) in showData" :key="data.id">
         <td class="ge">{{ index }}</td>
         <td class="ge">{{ data.commodityName }}</td>
-        <td class="ge">{{ data.classify }}</td>        
-        <td class="ge">{{ data.quantity }}</td>        
+        <td class="ge">{{ data.commodityClassify }}</td>        
+        <td class="ge">{{ data.commodityTotal }}</td>        
         <td class="ge">
           <el-button type="primary" @click="userDetailsButton(data.id)"
             >详情</el-button
@@ -36,7 +36,7 @@
             >
               <el-button
                 type="primary"
-                @click="deleteUserButton"
+                @click="deleteUserButton(userDetails.id)"
                 style="float: right"
                 >确 定</el-button
               >
@@ -52,34 +52,34 @@
               <i class="el-icon-user"></i>
               商品名
             </template>
-            {{ userDetails.commodityName }}
+            {{ commodityDetails.commodityName }}
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
               <i class="el-icon-mobile-phone"></i>
               分类
             </template>
-            {{ userDetails.classify }}
+            {{ commodityDetails.commodityClassify }}
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
               <i class="el-icon-location-outline"></i>
               数量
             </template>
-            {{ userDetails.quantity }}
+            {{ commodityDetails.commodityTotal }}
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
               售价
             </template>
-            无
+            {{ commodityDetails.commodityPrice }}
           </el-descriptions-item>
           <el-descriptions-item>
             <template slot="label">
               <i class="el-icon-office-building"></i>
               商品介绍
             </template>
-            江苏省苏州市吴中区吴中大道 1188 号
+           {{ commodityDetails.commodityIntroduce }}
           </el-descriptions-item>
         </el-descriptions>
         <span slot="footer" class="dialog-footer">
@@ -93,6 +93,7 @@
   </template>
   
   <script>
+  import { deleteData } from '@/utils';
   export default {
     name: "AdminCommodity",
     props: ["showData"],
@@ -101,7 +102,7 @@
         dialogVisible: false,
         innerVisible: false,
         size: "",
-        userDetails: {},
+        commodityDetails: {},
       };
     },
     methods: {
@@ -118,16 +119,19 @@
       //点击详情按钮触发
       userDetailsButton(id) {
         this.dialogVisible = true;
-        this.userDetails= this.showData.filter((user)=>{
+        this.commodityDetails= this.showData.filter((user)=>{
           return user.id==id
         })[0]
       
       },
       //下架商品
-      deleteUserButton() {
+      deleteUserButton(id) {
         this.innerVisible = false;
         this.dialogVisible = false;
-      },
+        deleteData('DeleteCommodity',id)
+        this.$message.success('下架成功');
+        location.reload()
+    },
     },
   };
   </script>
