@@ -3,17 +3,12 @@
     <h1 class="systemName">CDJ系统-{{ leixing===1?'管理员':'商家' }}</h1>
     <div class="demo-type userBar">
         <p class="admin" >{{$store.state.userInfo.userName||'请登录' }}</p>
-      <el-dropdown>
-        
-        <el-avatar icon="el-icon-user-solid"></el-avatar>
-
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-minus">退出登录</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus"
-            >用户设置</el-dropdown-item
-          >
-        </el-dropdown-menu>
-      </el-dropdown>
+        <el-dropdown>
+          <el-avatar icon="el-icon-user-solid"></el-avatar>
+          <el-dropdown-menu slot="dropdown">
+           <el-button @click="logOff">退出登录</el-button>
+          </el-dropdown-menu>
+        </el-dropdown>
     </div>
   </el-header>
 </template>
@@ -29,6 +24,12 @@ export default {
     }
     
   },
+  methods:{
+    logOff(){
+      this.$store.commit('changeUserInfo',{})
+      this.$router.push('login')
+    }
+  }
 };
 </script>
 

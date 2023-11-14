@@ -21,10 +21,7 @@
         <el-dropdown>
           <el-avatar icon="el-icon-user-solid"></el-avatar>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-minus">退出登录</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-circle-plus"
-              >用户设置</el-dropdown-item
-            >
+           <el-button @click="logOff">退出登录</el-button>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -62,6 +59,13 @@ export default {
     //前往商品详情页面关闭购物车
     closeShoppingCart(){
       this.dialogVisible=false
+    },
+    //登出
+    logOff(){
+      this.$store.commit('changeUserInfo',{})
+      this.$router.push({
+        name:'login'
+      })
     }
   },
 };

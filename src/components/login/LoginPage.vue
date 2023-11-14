@@ -108,7 +108,7 @@ export default {
           //发送网络请求 查看用户名是否存在
           axios
             .post(
-              "http://localhost:8080/api" +
+              "http://localhost:8080/" +
                 "/UserName" +
                 `?username=${this.userName}`
             )
@@ -148,7 +148,7 @@ export default {
           //登录表单
           axios
             .post(
-              "http://localhost:8080/api" +
+              "http://localhost:8080/" +
                 "/Login" +
                 `?username=${this.userName}&password=${this.password}&vcode=${this.vcode}`
             )
@@ -198,7 +198,7 @@ export default {
           //注册表单
           axios
             .post(
-              "http://localhost:8080/api" +
+              "http://localhost:8080/" +
                 "/Enroll" +
                 `?username=${this.userName}&password=${this.password}&vcode=${this.vcode}&searchClass=${this.searchClass}`
             )

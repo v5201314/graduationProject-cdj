@@ -20,12 +20,14 @@
          >
         </el-menu-item>
       </router-link>
+      <router-link to="/OrdersManagement">
         <el-menu-item index="4">
           <template slot="title"
             ><i class="el-icon-s-claim"></i>订单管理</template
           >
           
         </el-menu-item>
+      </router-link>
       </el-menu>
     </el-aside>
     <el-main>   

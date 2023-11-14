@@ -9,6 +9,7 @@ import AdminApp from "../components/AdminXp/AdminApp";
 import UserManagement from '../pages/admin/UserManagement'
 import BusinessManagement from '../pages/admin/BusinessManagement'
 import CommodityManagement from '../pages/admin/CommodityManagement'
+import OrdersManagement from '../pages/admin/OrdersManagement'
 //登录和注册页面
 import LoginPage from "../components/login/LoginPage.vue";
 //商家管理页面
@@ -45,6 +46,11 @@ const router = new VueRouter({
                     name: 'CommodityManagement',
                     path: '/CommodityManagement',
                     component: CommodityManagement,
+                },
+                {
+                    name: 'OrdersManagement',
+                    path: '/OrdersManagement',
+                    component: OrdersManagement,
                 },
             ]
 
@@ -107,7 +113,7 @@ router.beforeEach((to,from,next)=>{
             next()
         }
 
-    }else if(to.name==='UserManagement'||to.name==='BusinessManagement'||to.name==='CommodityManagement'){
+    }else if(to.name==='UserManagement'||to.name==='BusinessManagement'||to.name==='CommodityManagement'||to.name==='OrdersManagement'){
       
          //判断权限类型
          if(store.state.userInfo.permissions===3){

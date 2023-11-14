@@ -3,13 +3,13 @@
       <tr class="tableHeader">
         <th>序列</th>
         <th>商家名</th>
-        <th>手机号码</th>
+        <th>密码</th>
         <th>操作</th>
       </tr>
       <tr v-for="(data, index) in showData" :key="data.id">
         <td class="ge">{{ index }}</td>
-        <td class="ge">{{ data.businessName }}</td>
-        <td class="ge">{{ data.phoneNumber }}</td>
+        <td class="ge">{{ data.userName }}</td>
+        <td class="ge">{{ data.password }}</td>
         <td class="ge">
           <el-button type="primary" @click="userDetailsButton(data.id)"
             >详情</el-button
@@ -34,7 +34,8 @@
             >
               <el-button
                 type="primary"
-                @click="deleteUserButton"
+                @click="deleteUserButton(userDetails.id)"
+
                 style="float: right"
                 >确 定</el-button
               >
@@ -92,6 +93,7 @@
   </template>
   
   <script>
+  import { deleteData } from '@/utils';
   export default {
     name: "BusinessInfo",
     props: ["showData"],
@@ -123,9 +125,12 @@
       
       },
       //删除商家
-      deleteUserButton() {
+      deleteUserButton(id) {
         this.innerVisible = false;
         this.dialogVisible = false;
+        deleteData('DeleteUser',id)
+        this.$message.success('删除成功');
+        location.reload()
       },
     },
   };
